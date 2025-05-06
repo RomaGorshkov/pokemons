@@ -1,0 +1,32 @@
+.favorites__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorites__card {
+  display: flex;
+  width: 500px;
+  height: 400px;
+}
+
+.favorites__cardContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.favorites__description {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.favorites__deleteButton {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  justify-content: center;
+  background-color: #fc6565;
+  border-radius: 5px;
+  cursor: pointer;
+}
