@@ -1,5 +1,4 @@
 import React from "react";
-
 import axios from "axios";
 import {
   Grid,
@@ -28,7 +27,7 @@ const Pokemons: React.FC = () => {
     setLoading(true);
     try {
       const response = await axios.get<{ results: Pokemon[] }>(
-        `https://pokeapi.co/api/v2/pokemon?limit=10&offset=${offset}`
+        `${process.env.REACT_APP_POKEAPI_BASE_URL}/pokemon?limit=$20&offset=${offset}`
       );
       const basicPokemons = response.data.results;
 

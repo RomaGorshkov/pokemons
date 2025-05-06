@@ -1,8 +1,9 @@
 import React from "react";
+import { Grid, Card, CardMedia, CardContent, Typography } from "@mui/material";
+
+import { DetailedPokemon } from "../../../types";
 
 import PokemonsLayout from "../../../layouts/PokemonsLayout/PokemonsLayout";
-import { DetailedPokemon } from "../../../types";
-import { Grid, Card, CardMedia, CardContent, Typography } from "@mui/material";
 
 import "./Favorites.css";
 
@@ -22,9 +23,11 @@ const Favorites: React.FC = () => {
   const isFavorite = (pokemon: DetailedPokemon) =>
     favoritesPokemons.some((fav) => fav.name === pokemon.name);
 
+  if (!favoritesPokemons.length)
+    return <h1 className="noPokemons">No favorites pokemons, added yet</h1>;
+
   return (
     <PokemonsLayout>
-      {!favoritesPokemons.length && <h1>No favorites pokemons, added yet</h1>}
       {favoritesPokemons.map((pokemon, index) => (
         <Grid
           item
