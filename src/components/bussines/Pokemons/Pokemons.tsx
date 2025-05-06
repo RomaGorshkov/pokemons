@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import {
   Grid,
   Card,
@@ -10,10 +9,10 @@ import {
 } from "@mui/material";
 
 import PokemonsLayout from "../../../layouts/PokemonsLayout/PokemonsLayout";
-import { DetailedPokemon, Pokemon } from "../../../types";
+import { DetailedPokemon } from "../../../types";
+import { fetchPokemons } from "../../../api/api";
 
 import "./Pokemons.css";
-import { fetchPokemons } from "../../../api/api";
 
 const Pokemons: React.FC = () => {
   const [pokemons, setPokemons] = React.useState<DetailedPokemon[]>([]);

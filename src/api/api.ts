@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { Pokemon, DetailedPokemon } from "../types";
 
 const BASE_URL = process.env.REACT_APP_POKEAPI_BASE_URL;
