@@ -13,6 +13,7 @@ import PokemonsLayout from "../../../layouts/PokemonsLayout/PokemonsLayout";
 import { DetailedPokemon, Pokemon } from "../../../types";
 
 import "./Pokemons.css";
+import { fetchPokemons } from "../../../api/api";
 
 const Pokemons: React.FC = () => {
   const [pokemons, setPokemons] = React.useState<DetailedPokemon[]>([]);
@@ -23,24 +24,11 @@ const Pokemons: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
   const observer = React.useRef<HTMLDivElement | null>(null);
 
-  const fetchPokemons = React.useCallback(async () => {
+  const fetchMorePokemons = React.useCallback(async () => {
     setLoading(true);
     try {
-      const response = await axios.get<{ results: Pokemon[] }>(
-        `${process.env.REACT_APP_POKEAPI_BASE_URL}/pokemon?limit=$20&offset=${offset}`
-      );
-      const basicPokemons = response.data.results;
-
-      const detailedResponses = await Promise.all(
-        basicPokemons.map((pokemon) => axios.get(pokemon.url))
-      );
-
-      const detailedPokemons = detailedResponses.map((res) => ({
-        name: res.data.name,
-        image: res.data.sprites.front_default,
-      }));
-
-      setPokemons((prev) => [...prev, ...detailedPokemons]);
+      const newPokemons = await fetchPokemons(20, offset);
+      setPokemons((prev) => [...prev, ...newPokemons]);
     } catch (error) {
       console.error("Error fetching pokemons:", error);
     } finally {
@@ -49,8 +37,8 @@ const Pokemons: React.FC = () => {
   }, [offset]);
 
   React.useEffect(() => {
-    fetchPokemons();
-  }, [fetchPokemons]);
+    fetchMorePokemons();
+  }, [fetchMorePokemons]);
 
   React.useEffect(() => {
     const handleObserver = (entries: IntersectionObserverEntry[]) => {
