@@ -1,0 +1,42 @@
+.pokemons__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokemons__card {
+  display: flex;
+  width: 500px;
+  height: 400px;
+}
+
+.pokemons__cardContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.pokemons__description {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.pokemons__addButton {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  justify-content: center;
+  background-color: #3b84f1;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pokemons__deleteButton {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  justify-content: center;
+  background-color: #fc6565;
+  border-radius: 5px;
+  cursor: pointer;
+}
